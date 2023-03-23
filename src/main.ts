@@ -5,6 +5,8 @@ const score_element = document.getElementById("score") as HTMLParagraphElement;
 canvas.width = 500;
 canvas.height = 500;
 
+let c: null | boolean = null;
+
 interface snakePosConfig {
   x: number;
   y: number;
@@ -75,7 +77,7 @@ function draw() {
     ctx!.strokeStyle = "#ddd";
     ctx!.strokeRect(snake[i].x, snake[i].y, index, index);
   }
-  //   // random apple
+  // random apple
   ctx!.fillStyle = "red";
   ctx!.fillRect(randomApple.xPos, randomApple.yPos, index, index);
 
@@ -108,6 +110,10 @@ function draw() {
   //   game over function
   canvasCollision(newHead);
 
+  if (c) {
+    window.location.href = "/";
+  }
+
   snake.unshift(newHead);
 }
 
@@ -118,9 +124,9 @@ function canvasCollision(head: snakePosConfig) {
     head.x < 0 ||
     head.y < 0
   ) {
-    console.log("collision");
     clearInterval(game);
+    c = confirm(`Game end your score is ${score}. do you want to play again?`);
   }
 }
 
-let game: number = setInterval(draw, 100);
+let game: number = setInterval(draw, 200);
