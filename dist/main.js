@@ -88,7 +88,7 @@ function draw() {
     //   game over function
     canvasCollision(newHead);
     if (c) {
-        window.location.href = "/";
+        window.location.reload();
     }
     snake.unshift(newHead);
 }

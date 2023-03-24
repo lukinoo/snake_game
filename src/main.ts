@@ -111,7 +111,7 @@ function draw() {
   canvasCollision(newHead);
 
   if (c) {
-    window.location.href = "/index.html";
+    window.location.reload();
   }
 
   snake.unshift(newHead);
